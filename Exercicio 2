@@ -1,0 +1,18 @@
+addi $t2,$gp,4 # t2 ponteiro inicio vetor
+lw $t1,0($gp) # t1 tamanho vetor
+add $t1,$t1,$t1
+add $t1,$t1,$t1 # t1 = 4t1
+add $t1,$t2,$t1 #t1 = Tam*4+t2 ponteiro final do vetor
+lw $t5,4($gp) #ate onde vai
+li $t3,0 #auxiliar
+li $t4,0 # soma
+loop: bne $t5,$t1,fim
+beq $t3,$t5, fim
+lw $t6,0($t2)
+addi $t2,$t2,4  #t2 += 4
+add $t4,$t4,$t6 # sum= sum + v[t2]
+addi $t3,$t3,1
+fim: lw $t4,8($gp)
+
+
+
